@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "http://127.0.0.1:8000/predict"
+BACKEND_URL = st.secrets.get("API_BASE_URL")
 
 st.title("Student Placement Predicator")
 st.markdown("Enter the necessary data to predict if you would get a placement")
@@ -83,7 +83,7 @@ if submitted:
   "communication_score" :communication_score,
   "backlogs": backlogs
 }
-        response = requests.post(API_URL, json=payload)
+        response = requests.post(BACKEND_URL, json=payload)
         
    
         if response.status_code == 200:
